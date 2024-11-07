@@ -8,14 +8,14 @@ document.getElementById('close-btn').addEventListener('click', () => {
 });
 
 // Apply configuration changes
-document.getElementById('apply-btn').addEventListener('click', () => {
-    const numParticles = parseInt(document.getElementById('numParticles').value);
-    const noise = parseFloat(document.getElementById('noise').value);
-    const stepSize = parseFloat(document.getElementById('stepSize').value);
+// document.getElementById('apply-btn').addEventListener('click', () => {
+//     const numParticles = parseInt(document.getElementById('numParticles').value);
+//     const noise = parseFloat(document.getElementById('noise').value);
+//     const stepSize = parseFloat(document.getElementById('stepSize').value);
 
-    // Apply the parameters in sketch.js
-    applyParameters(numParticles, noise, stepSize);
+//     // Apply the parameters in sketch.js
+//     applyParameters(numParticles, noise, stepSize);
     
-    // Close the sidebar
-    document.getElementById('sidebar').style.left = '-250px';
-});
+//     // Close the sidebar
+//     document.getElementById('sidebar').style.left = '-250px';
+// });

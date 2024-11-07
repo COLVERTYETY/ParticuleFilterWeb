@@ -17,28 +17,36 @@
         <!-- <label for="noise">Measurement Noise (σ)</label>
         <input type="number" id="noise" value="10" min="0" step="1"> -->
         
-        <label for="stepSize">Step Size</label>
-        <input type="number" id="stepSize" value="10" min="1" step="1">
+        <label for="varianceScaler">Variance Scaler</label>
+        <input type="range" id="varianceScaler" value="0.1" min="0" max="1" step="0.01">
+        <span id="varianceScalerValue">0.1</span>
     
-        <label for="showParticles" class="checkbox-label">Show Particles
+        <label for="showParticles" class="checkbox-label">Show Particles :'p'
             <input type="checkbox" id="showParticles" checked>
         </label>
+        <label for="showGT" class="checkbox-label">Show Ground Truth :'t'
+            <input type="checkbox" id="showGT" checked>
+        </label>
     
-        <label for="updateMesh" class="checkbox-label">Update from Node Mesh
-            <input type="checkbox" id="updateMesh">
+        <label for="updateMesh" class="checkbox-label">Update Mesh on click :'u'
+            <input type="checkbox" id="updateMesh" checked>
         </label>
 
-        <label for="clickupdate" class="checkbox-label">Update on click
+        <label for="clickupdate" class="checkbox-label">Update on click :'c'
             <input type="checkbox" id="clickupdate" checked>
         </label>
     
         <label for="addMode" class="select-label">On click add:
             <select id="addMode">
-                <option value="anchor">Anchor</option>
-                <option value="node">Node</option>
-                <option value="nothing">Nothing</option>
+                <option value="anchor">Anchor :'a'</option>
+                <option value="node">Node :'n'</option>
+                <option value="nothing">Nothing :'o'</option>
             </select>
         </label>
+
+        <button id="mesh-btn">Update mesh once: 'm'</button>
+        <button id="anchor-btn">Update anchors once: 'l'</button>
+
     
         <!-- <button id="apply-btn">Apply</button> -->
     </div>
