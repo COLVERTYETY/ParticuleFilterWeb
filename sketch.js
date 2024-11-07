@@ -2,6 +2,14 @@ let nodes = [];
 let anchorNodes = [];
 let numParticles = 500;
 
+const numParticlesInput = document.getElementById('numParticles');
+// const noiseInput = document.getElementById('noise');
+const stepSizeInput = document.getElementById('stepSize');
+const showParticlesInput = document.getElementById('showParticles');
+const updateMeshInput = document.getElementById('updateMesh');
+const clickupateInput = document.getElementById('clickupdate');
+const addModeInput = document.getElementById('addMode');
+
 function setup() {
     createCanvas(windowWidth, windowHeight);
 
@@ -15,7 +23,8 @@ function draw() {
     // Draw each node
     nodes.forEach(node => {
         // node.updateParticles(anchorNodes);
-        node.draw();
+        const drawParticles = showParticlesInput.checked;
+        node.draw(drawParticles);
     });
 
     // // Draw anchor nodes
@@ -42,13 +51,20 @@ function mousePressed() {
     const isSidebarOpen = sidebar.style.left === "0px";
 
     if (!isSidebarOpen && !isClickOnMenuButton) {
-        // Add anchor node only if sidebar is closed
-        let new_anchor = new Node(anchorNodes.length + 1, mouseX, mouseY, 0, true);
-        anchorNodes.push(new_anchor);
+        if (addModeInput.options[addModeInput.selectedIndex].value === "anchor") {
+            let new_anchor = new Node(anchorNodes.length + 1, mouseX, mouseY, 0, true);
+            anchorNodes.push(new_anchor);
+            if (clickupateInput.checked) {
+                nodes.forEach(node => {
+                    node.updateParticles(new_anchor);
+                }); 
+            }
+        } else if (addModeInput.options[addModeInput.selectedIndex].value === "node") {
+            let new_node = new Node(nodes.length + 1, mouseX, mouseY, numParticles);
+            nodes.push(new_node);
+        }
 
-        nodes.forEach(node => {
-            node.updateParticles(new_anchor);
-        });
+        
     }
 }
 
@@ -84,7 +100,7 @@ class Node {
         }
     }
 
-    draw() {
+    draw(drawParticles) {
         // Draw the true position of the node with a label
         if (!this.isanchor) {
             fill(255, 0, 0, 60);
@@ -93,15 +109,17 @@ class Node {
             textSize(12);
             textAlign(CENTER, CENTER);
             text(this.id, this.position.x, this.position.y);
-            // Draw particles
-            this.particles.forEach(particle => {
-                fill(128, 128, 128, 150 * particle.weight);
-                ellipse(particle.position.x, particle.position.y, particle.weight*10, particle.weight*10);
-                fill(255);
-                textSize(10);
-                textAlign(CENTER, CENTER);
-                text(particle.weight.toFixed(2), particle.position.x, particle.position.y);
-            });
+            if (drawParticles) {
+                // Draw particles
+                this.particles.forEach(particle => {
+                    fill(128, 128, 128, 150 * particle.weight);
+                    ellipse(particle.position.x, particle.position.y, particle.weight*10, particle.weight*10);
+                    fill(255);
+                    textSize(10);
+                    textAlign(CENTER, CENTER);
+                    text(particle.weight.toFixed(2), particle.position.x, particle.position.y);
+                });
+            }
             // draw a green circle at the estimated position
             fill(0, 255, 0, 60);
             ellipse(this.estimated.x, this.estimated.y, 20, 20);
