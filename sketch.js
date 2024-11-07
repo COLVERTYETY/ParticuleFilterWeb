@@ -270,8 +270,12 @@ class Node {
         //  calculate the distance between the node and the anchor
         let Measured_distance = dist(this.position.x, this.position.y, anchor.estimated.x, anchor.estimated.y) + randomGaussian(0, anchor.variance);
         //  if particules are not initialized, do it so that they are around the anchor node, use circle fomula to get a random point around the anchor
+        if (this.particles.length === 0 && !anchor.isanchor) {
+            console.log("only init after one anchor");
+            return;
+        }
         let sum_w = 0;
-        if (this.particles.length === 0) {
+        if (this.particles.length === 0 || isNaN(this.variance)) {
             this.initParticules(anchor, Measured_distance);
             sum_w = 1;
         } else{
@@ -338,7 +342,7 @@ class Node {
             // Clone particle to avoid reference issues
             let chosen = this.particles[i];
             let newparticule = {position: createVector(chosen.position.x, chosen.position.y), weight: chosen.weight};
-            newparticule.position.add(p5.Vector.random2D().mult(randomGaussian(0, this.variance*this.VarianceScale)));
+            newparticule.position.add(p5.Vector.random2D().mult(randomGaussian(0, 10*this.VarianceScale)));
             new_particles.push(newparticule);
             // new_particles.push(this.particles[i]);
         }
