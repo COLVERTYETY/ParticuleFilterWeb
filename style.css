@@ -1,0 +1,85 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #333;
+}
+
+/* Sidebar styling */
+#sidebar {
+    width: 250px;
+    height: 100%;
+    background-color: #222;
+    color: #fff;
+    position: fixed;
+    left: -250px;
+    top: 0;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+    transition: left 0.3s;
+}
+
+#sidebar h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+#sidebar label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+/* Aligning checkboxes and select elements horizontally with their labels */
+#sidebar label.checkbox-label, 
+#sidebar label.select-label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+#sidebar label.checkbox-label input[type="checkbox"], 
+#sidebar label.select-label select {
+    margin-left: 10px;
+    flex-shrink: 0;
+}
+
+/* Other input and button styling */
+#sidebar input[type="number"], #sidebar button {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 4px;
+}
+
+#apply-btn {
+    background-color: #28a745;
+    color: white;
+    cursor: pointer;
+}
+
+#open-btn, #close-btn {
+    font-size: 24px;
+    color: white;
+    background-color: #333;
+    border: none;
+    cursor: pointer;
+}
+
+#open-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+}
+
+#close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}

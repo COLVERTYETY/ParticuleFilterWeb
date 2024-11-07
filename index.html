@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Particle Filter Demo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="sidebar">
+        <button id="close-btn">×</button>
+        <h2>Configuration</h2>
+    
+        <label for="numParticles">Number of Particles</label>
+        <input type="number" id="numParticles" value="500" min="100" max="2000" step="100">
+        
+        <label for="noise">Measurement Noise (σ)</label>
+        <input type="number" id="noise" value="10" min="0" step="1">
+        
+        <label for="stepSize">Step Size</label>
+        <input type="number" id="stepSize" value="10" min="1" step="1">
+    
+        <label for="showParticles" class="checkbox-label">Show Particles
+            <input type="checkbox" id="showParticles" checked>
+        </label>
+    
+        <label for="updateMesh" class="checkbox-label">Update from Node Mesh
+            <input type="checkbox" id="updateMesh">
+        </label>
+
+        <label for="clickupdate" class="checkbox-label">Update on click
+            <input type="checkbox" id="clickupdate" checked>
+        </label>
+    
+        <label for="addMode" class="select-label">On click add:
+            <select id="addMode">
+                <option value="anchor">Anchor</option>
+                <option value="node">Node</option>
+                <option value="nothing">Nothing</option>
+            </select>
+        </label>
+    
+        <button id="apply-btn">Apply</button>
+    </div>
+    
+    <button id="open-btn">☰</button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script src="sketch.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
