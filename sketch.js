@@ -337,6 +337,7 @@ class Node {
             let U = r + m*w_target;
             while (U > c) {
                 i += 1;
+                i = i % N;
                 c += this.particles[i].weight;
             }
             // Clone particle to avoid reference issues
